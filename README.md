@@ -1,4 +1,4 @@
-# Packaged Version of Mask3D to be used in LabelMaker
+# Packaged version of Mask3D to be used in LabelMaker
 
 ## Installation
 
