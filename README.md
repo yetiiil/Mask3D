@@ -41,6 +41,15 @@ pip install .
 
 ```
 
+To use the model in your code you need to download a checkpoint from the list below.
+Afterwards, the basic model can be used like:
+
+```python
+from mask3d import get_model
+
+model = get_model()
+```
+
 
 
 
