@@ -144,7 +144,11 @@ def prepare_data(mesh, device):
     return data, points, colors, features, unique_map, inverse_map
 
 
-def map_output_to_pointcloud(mesh, outputs, inverse_map, label_space='scannet200'):
+def map_output_to_pointcloud(mesh, 
+                             outputs, 
+                             inverse_map, 
+                             label_space='scannet200',
+                             confidence_threshold=0.9):
     
     # parse predictions
     logits = outputs["pred_logits"]
@@ -166,7 +170,7 @@ def map_output_to_pointcloud(mesh, outputs, inverse_map, label_space='scannet200
         m = p_masks > 0.5
         c_m = p_masks[m].sum() / (m.sum() + 1e-8)
         c = c_label * c_m
-        if l < 200 and c > 0.5:
+        if l < 200 and c > confidence_threshold:
             labels.append(l.item())
             confidences.append(c.item())
             masks_binary.append(
@@ -218,7 +222,7 @@ if __name__ == '__main__':
     model.to(device)
     
     # load input data
-    pointcloud_file = 'test_data/pcl.ply'
+    pointcloud_file = 'data/pcl.ply'
     mesh = load_mesh(pointcloud_file)
     
     # prepare data
@@ -232,5 +236,5 @@ if __name__ == '__main__':
     labels = map_output_to_pointcloud(mesh, outputs, inverse_map)
     
     # save colorized mesh
-    save_colorized_mesh(mesh, labels, 'test_data/pcl_labelled.ply', colormap='scannet200')
+    save_colorized_mesh(mesh, labels, 'data/pcl_labelled.ply', colormap='scannet200')
     
