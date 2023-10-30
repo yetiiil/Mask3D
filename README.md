@@ -81,6 +81,8 @@ labels = map_output_to_pointcloud(mesh, outputs, inverse_map)
 save_colorized_mesh(mesh, labels, 'data/pcl_labelled.ply', colormap='scannet200')
 ```
 
+So far, only Scannet200 checkpoints are supported. We are working on the ScanNet checkpoints. 
+
 # Original Information
 
 ## Mask3D: Mask Transformer for 3D Instance Segmentation
