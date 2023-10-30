@@ -48,7 +48,7 @@ Afterwards, the basic model can be used like:
 ```python
 from mask3d import get_model
 
-model = get_model(checkpoint_file='')
+model = get_model(checkpoint_path='checkpoints/scannet200/scannet200_benchmark.ckpt')
 ```
 
 
@@ -80,6 +80,8 @@ labels = map_output_to_pointcloud(mesh, outputs, inverse_map)
 # save colorized mesh
 save_colorized_mesh(mesh, labels, 'data/pcl_labelled.ply', colormap='scannet200')
 ```
+
+So far, only Scannet200 checkpoints are supported. We are working on the ScanNet checkpoints. 
 
 # Original Information
 
