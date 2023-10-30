@@ -48,7 +48,7 @@ Afterwards, the basic model can be used like:
 ```python
 from mask3d import get_model
 
-model = get_model(checkpoint_file='')
+model = get_model(checkpoint_path='checkpoints/scannet200/scannet200_benchmark.ckpt')
 ```
 
 
